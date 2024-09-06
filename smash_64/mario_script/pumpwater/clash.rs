@@ -4,8 +4,13 @@ unsafe extern "C" fn mario_pumpwater_clash_pre_status(weapon: &mut L2CWeaponComm
 }
 
 unsafe extern "C" fn mario_pumpwater_clash_main_status(weapon: &mut L2CWeaponCommon) -> L2CValue {
-    MotionModule::change_motion(weapon.module_accessor, Hash40::new("die"), 0.0, 1.0, false, 0.0, false, false);
-    weapon.fastshift(L2CValue::Ptr(mario_pumpwater_die_main_loop as *const () as _))
+    if WorkModule::is_flag(weapon.module_accessor, *WEAPON_MARIO_PUMP_WATER_INSTANCE_WORK_ID_FLAG_CLASH_GROUND) {
+        MotionModule::change_motion(weapon.module_accessor, Hash40::new("clash"), 0.0, 1.0, false, 0.0, false, false);
+    }
+    else {
+        MotionModule::change_motion(weapon.module_accessor, Hash40::new("clash_air"), 0.0, 1.0, false, 0.0, false, false);
+    }
+    weapon.fastshift(L2CValue::Ptr(mario_pumpwater_clash_main_loop as *const () as _))
 }
 
 unsafe extern "C" fn mario_pumpwater_clash_main_loop(weapon: &mut L2CWeaponCommon) -> L2CValue {
