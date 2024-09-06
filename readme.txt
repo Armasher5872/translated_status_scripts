@@ -1,0 +1,1 @@
+Do note that some of these translations may be inaccurate, and if anyone who is proficient at translating these statuses would like to correct me on the matter, let me know via a DM.
