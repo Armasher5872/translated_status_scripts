@@ -23,11 +23,8 @@ unsafe extern "C" fn reflet_special_lw_main_status(fighter: &mut L2CFighterCommo
         WorkModule::off_flag(fighter.module_accessor, *FIGHTER_REFLET_INSTANCE_WORK_ID_FLAG_SPECIAL_FAILURE);
         WorkModule::dec_int(fighter.module_accessor, *FIGHTER_REFLET_INSTANCE_WORK_ID_INT_SPECIAL_LW_CURRENT_POINT);
         smash::app::FighterSpecializer_Reflet::change_grimoire(fighter_module_accessor, *FIGHTER_REFLET_MAGIC_KIND_RIZAIA);
-        let special_lw_current_point = WorkModule::get_int(fighter.module_accessor, *FIGHTER_REFLET_INSTANCE_WORK_ID_INT_SPECIAL_LW_CURRENT_POINT);
-        if special_lw_current_point > 0 {
-            fighter.sub_shift_status_main(L2CValue::Ptr(reflet_special_lw_main_loop as *const () as _))
-        }
         smash::app::FighterSpecializer_Reflet::set_flag_to_table(fighter_module_accessor, *FIGHTER_REFLET_MAGIC_KIND_RIZAIA, true, *FIGHTER_REFLET_INSTANCE_WORK_ID_INT_THROWAWAY_TABLE);
+        fighter.sub_shift_status_main(L2CValue::Ptr(reflet_special_lw_main_loop as *const () as _))
     }
     else {
         WorkModule::on_flag(fighter.module_accessor, *FIGHTER_REFLET_INSTANCE_WORK_ID_FLAG_SPECIAL_FAILURE);
