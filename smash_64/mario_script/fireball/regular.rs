@@ -20,7 +20,7 @@ unsafe extern "C" fn mario_fireball_regular_main_loop(weapon: &mut L2CWeaponComm
     0.into()
 }
 
-unsafe extern "C" fn mario_fireball_regular_main_status(weapon: &mut L2CWeaponCommon) -> L2CValue {
+unsafe extern "C" fn mario_fireball_regular_exec_status(weapon: &mut L2CWeaponCommon) -> L2CValue {
     WorkModule::dec_int(weapon.module_accessor, WEAPON_INSTANCE_WORK_ID_INT_LIFE);
     0.into()
 }
