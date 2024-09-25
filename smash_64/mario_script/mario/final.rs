@@ -7,7 +7,7 @@ unsafe extern "C" fn mario_final_pre_status(fighter: &mut L2CFighterCommon) -> L
 
 unsafe extern "C" fn mario_final_main_status(fighter: &mut L2CFighterCommon) -> L2CValue {
   notify_event_msc_cmd!(fighter, Hash40::new_raw(0x201bc9217c));
-  AreaModule::set_whole(fighter.module_accessor);
+  AreaModule::set_whole(fighter.module_accessor, false);
   WorkModule::enable_transition_term(fighter.module_accessor, *FIGHTER_STATUS_TRANSITION_TERM_ID_WAIT);
   WorkModule::enable_transition_term(fighter.module_accessor, *FIGHTER_STATUS_TRANSITION_TERM_ID_FALL);
   fun_71000073a0(fighter);
